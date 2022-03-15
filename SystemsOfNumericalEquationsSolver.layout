@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="sources\main.cpp" Top="No" Tabpos="1" TopLine="1">
+			<Cursor Line="18" Column="2"/>
+		</File>
+		<File Name="headers\matrix.h" Top="No" Tabpos="2" TopLine="1">
+			<Cursor Line="20" Column="13"/>
+		</File>
+		<File Name="sources\matrix.cpp" Top="Yes" Tabpos="3" TopLine="1">
+			<Cursor Line="51" Column="23"/>
+		</File>
+		<File Name="headers\solver.h" Top="No" Tabpos="4" TopLine="1">
+			<Cursor Line="3" Column="11"/>
+			<Selection Line="3" Column="14"/>
+		</File>
+		<File Name="sources\solver.cpp" Top="No" Tabpos="5" TopLine="1">
+			<Cursor Line="1" Column="31"/>
+		</File>
+	</Files>
+	<Folders>
+		<Folder Name="headers" Expanded="Yes"/>
+		<Folder Name="sources" Expanded="Yes"/>
+	</Folders>
+</Layout>
