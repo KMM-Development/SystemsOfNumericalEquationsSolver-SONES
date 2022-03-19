@@ -1,9 +1,6 @@
-#ifndef SOLVER_H
-#define SOLVER_H
+#pragma once
 #include "../headers/matrix.h"
 
 class Solver {
 	
 };
-
-#endif

@@ -1,20 +1,23 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#pragma once
 #include <iostream>
 
-class Matrix{
-	
+class Matrix
+{
 	public:
 	Matrix();
-	Matrix(int m, int n);
+	Matrix(int, int);
+	//Matrix(double[] )
 	
 	static double getDeterminantOf(Matrix a); // m == n
 	
+	void set(int row, int col, int val);
 	void initialize();
 	void show();
 	void fillWithOnes();
 	void fillWithZeros();
 	void fillWithRandom();
+	
+	double get(int row, int col);
 	
 	int getM();
 	int getN();
@@ -23,9 +26,6 @@ class Matrix{
 	Matrix getComplementaryMatrix(int m, int n);
 	
 	private:
-	int m, n; /// m = x, n = y
-	double* *content;
-		
+	int m_, n_; /// m = x, n = y
+	double* *content_;
 };
-
-#endif
