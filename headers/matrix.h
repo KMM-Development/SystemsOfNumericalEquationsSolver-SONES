@@ -10,7 +10,7 @@ class Matrix
 	
 	static double getDeterminantOf(Matrix); // m == n
 	
-	void set(int, int, int);
+	void set(int, int, double);
 	void initialize();
 	void show();
 	void fillWithOnes();

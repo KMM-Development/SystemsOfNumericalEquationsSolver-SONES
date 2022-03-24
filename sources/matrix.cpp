@@ -96,7 +96,7 @@ Matrix Matrix::getComplementaryMatrix(int m, int n)
 
 	return mtrx;
 }
-void Matrix::set(int row, int col, int val)
+void Matrix::set(int row, int col, double val)
 {
 	content_[row][col] = val;
 }
