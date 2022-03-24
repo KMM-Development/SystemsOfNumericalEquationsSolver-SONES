@@ -6,24 +6,24 @@ class Matrix
 	public:
 	Matrix();
 	Matrix(int, int);
-	//Matrix(double[] )
+	Matrix(int, int, double[]);
 	
-	static double getDeterminantOf(Matrix a); // m == n
+	static double getDeterminantOf(Matrix); // m == n
 	
-	void set(int row, int col, int val);
+	void set(int, int, int);
 	void initialize();
 	void show();
 	void fillWithOnes();
 	void fillWithZeros();
-	void fillWithRandom();
+	//void fillWithRandom();
 	
-	double get(int row, int col);
+	double get(int, int);
 	
 	int getM();
 	int getN();
 	
 	// get a matrix without column m and row n
-	Matrix getComplementaryMatrix(int m, int n);
+	Matrix getComplementaryMatrix(int, int);
 	
 	private:
 	int m_, n_; /// m = x, n = y

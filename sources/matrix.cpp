@@ -16,6 +16,22 @@ Matrix::Matrix(int m, int n)
 	fillWithZeros();
 }
 
+Matrix::Matrix(int m, int n, double arr[])
+	: m_(m)
+	, n_(n)
+{
+	initialize();
+	fillWithZeros();
+	//int x = 0, y = 0;
+	for (int i = 0; i < (m_*n_); i++) {
+		content_[i%m_][i/m_] = arr[i];
+		//if (x >= m_) {
+		//	x = 0; y++;
+		//	if (y >= n_) return;
+		//}
+	}
+}
+
 void Matrix::show()
 {
 	for(int i = 0; i<n_; i++)
