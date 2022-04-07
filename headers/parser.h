@@ -6,4 +6,5 @@
 class Parser {
 	public:
 		static std::vector<double> parseLineOfDoublesAndReverse(std::string);
+
 };

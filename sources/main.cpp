@@ -15,8 +15,9 @@ int main(int argc, char* argv[])
 	try {
 		std::vector<Option> options = {
 			Option((std::string)("Exit"), &finish),
-			Option((std::string)("Solve a system of numerical equations using a matrix"), &(Solver::solveSystemOfNumericalEquations)),
-			Option((std::string)("Calculate an area of integrate using trapezoids"), &(Solver::calculateAreaOfIntegrateUsingTrapezoids))
+			Option((std::string)("Solve a system of numerical equations using a matrix"), &(Solver::solveSystemOfNumericalEquationsUsingMatrices)),
+			Option((std::string)("Calculate an area of integrate using trapezoids"), &(Solver::calculateAreaOfIntegrateUsingTrapezoids))//,
+			//Option((std::string)("Solve a system of polynominal equations"), &(Solver::solveSystemOfPolynominalEquations))
 		};
 		Menu *menu = new Menu(options);
 		int choice = 1;
