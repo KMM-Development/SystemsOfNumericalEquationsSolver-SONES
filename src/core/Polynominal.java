@@ -23,6 +23,8 @@ public class Polynominal
 		return output;
 	}
 	
+	
+	
 	public static Polynominal simpleInterpret(String line)
 	{
 		String[] split = line.split(" ");

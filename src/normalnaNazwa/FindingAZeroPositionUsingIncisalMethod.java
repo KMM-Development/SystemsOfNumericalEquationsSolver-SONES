@@ -1,32 +1,37 @@
 package normalnaNazwa;
 
 import core.Program;
+import core.Tools;
 
 public class FindingAZeroPositionUsingIncisalMethod extends NormalnaNazwa
 {
 
 	public double f(double x)
 	{
-		return x * x + 1;
+		return x*x + 4;
 	}
 	
-	public double abs(double x)
-	{
-		return x * x>0? 1:-1;
-	}
+	// TODO Zrobić to nie na twardo
 	
 	@Override
 	public void begin()
 	{
 		double 
 			approximationAccuracy = 1e-14,
-			x1 = 2,
-			x2 = 4,
+			x1 = -1,
+			x2 = 1,
 			xn = 0,
 			fn = 0;
 		
+		/*
+		 2 4 2
+		 1 2 3
+		 
+		 
+		*/
+		
 		int
-			maxNumberOfChecks = 64,
+			maxNumberOfChecks = 100,
 			numberOfChecks = 0;
 		
 		double
@@ -42,7 +47,7 @@ public class FindingAZeroPositionUsingIncisalMethod extends NormalnaNazwa
 
 	        fn = f(xn);
 
-	        if((abs(fn) < approximationAccuracy) || (abs(xn - x2) < approximationAccuracy))
+	        if((Tools.absoluteValueOf(fn) < approximationAccuracy) || (Tools.absoluteValueOf(xn - x2) < approximationAccuracy))
 	        {
 	      	  resultIsFound = true;
 	           break;
@@ -56,10 +61,10 @@ public class FindingAZeroPositionUsingIncisalMethod extends NormalnaNazwa
 			Program.print("Result was not found - possibly a zero position does not exist.");
 		
 		Program.print( 
-				"ZeroPosition xn = %f\n"
-				+ "Function Value f(xn) = %f\n"
-				+ "Approximation Accuracy = %f\n"
-				+ "Runs performed = %d",
+					"ZeroPosition xn = %f\n"
+				+	"Function Value f(xn) = %f\n"
+				+	"Approximation Accuracy = %f\n"
+				+	"Runs performed = %d",
 				
 				xn, 
 				fn, 

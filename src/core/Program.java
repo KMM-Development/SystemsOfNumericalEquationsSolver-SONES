@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import normalnaNazwa.CalculatingDeterminantOfAMatrix;
 import normalnaNazwa.FindingAZeroPositionUsingIncisalMethod;
+import normalnaNazwa.FindingAZeroPositionUsingNewtonMethod;
 import normalnaNazwa.NormalnaNazwa;
 import normalnaNazwa.UsingTrapeziodsToCalculateAreaOfIntegrate;
 

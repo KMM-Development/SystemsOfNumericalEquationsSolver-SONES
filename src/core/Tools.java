@@ -18,4 +18,10 @@ public class Tools
 		return output;
 	}
 	
+	
+	public static double absoluteValueOf(double x)
+	{
+		return x * ( x > 0 ? 1 : -1 );
+	}
+	
 }
