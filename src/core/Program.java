@@ -2,6 +2,11 @@ package core;
 
 import java.io.IOException;
 
+import normalnaNazwa.CalculatingDeterminantOfAMatrix;
+import normalnaNazwa.FindingAZeroPositionUsingIncisalMethod;
+import normalnaNazwa.NormalnaNazwa;
+import normalnaNazwa.UsingTrapeziodsToCalculateAreaOfIntegrate;
+
 public class Program 
 {
 
@@ -9,10 +14,12 @@ public class Program
 	{
 		try
 		{
-			Solver.calculateAreaOfIntegrateUsingTrapezoids();
-		} catch (NumberFormatException | IOException e)
+			NormalnaNazwa n = new FindingAZeroPositionUsingIncisalMethod();
+			n.begin();
+		} 
+		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
+			print("Something caught in main");
 			e.printStackTrace();
 		}
 		

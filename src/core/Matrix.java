@@ -53,7 +53,7 @@ public class Matrix
 	}
 	
 	
-	public double getDeterminant() throws ProgramException
+	public double getDeterminant()
 	{
 		
 		return getDeterminantOf(this);
@@ -76,10 +76,8 @@ public class Matrix
 		return output.trim();
 	}
 	
-	private static double getDeterminantOf(Matrix matrix) throws ProgramException
+	private static double getDeterminantOf(Matrix matrix)
 	{
-		if(matrix.rows != matrix.columns) throw new ProgramException("This is not a square matrix, therefore there is no determinant");
-		
 		if(matrix.columns == 1)
 		{
 			return matrix.get(0, 0);
