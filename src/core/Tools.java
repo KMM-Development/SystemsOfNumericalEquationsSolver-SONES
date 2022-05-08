@@ -18,6 +18,18 @@ public class Tools
 		return output;
 	}
 	
+	public static ArrayList<Double> trimArrayToGivenSize(ArrayList<Double> input, int wantedSize)
+	{
+		if(input.size() == wantedSize) return input;
+		
+		ArrayList<Double> output = new ArrayList<>();
+		for(int i = 0; i < wantedSize; i++)
+		{
+			output.add(input.get(i));
+		}
+		
+		return output;
+	}
 	
 	public static double absoluteValueOf(double x)
 	{

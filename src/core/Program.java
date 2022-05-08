@@ -2,11 +2,12 @@ package core;
 
 import java.io.IOException;
 
-import normalnaNazwa.CalculatingDeterminantOfAMatrix;
-import normalnaNazwa.FindingAZeroPositionUsingIncisalMethod;
-import normalnaNazwa.FindingAZeroPositionUsingNewtonMethod;
-import normalnaNazwa.NormalnaNazwa;
-import normalnaNazwa.UsingTrapeziodsToCalculateAreaOfIntegrate;
+import numericMethod.CalculatingDeterminantOfAMatrix;
+import numericMethod.FindingAZeroPositionUsingIncisalMethod;
+import numericMethod.FindingAZeroPositionUsingNewtonMethod;
+import numericMethod.NumericalMethod;
+import numericMethod.SolvingASystemOfNumericalEquations;
+import numericMethod.UsingTrapeziodsToCalculateAreaOfIntegrate;
 
 public class Program 
 {
@@ -15,7 +16,7 @@ public class Program
 	{
 		try
 		{
-			NormalnaNazwa n = new FindingAZeroPositionUsingIncisalMethod();
+			NumericalMethod n = new SolvingASystemOfNumericalEquations();
 			n.begin();
 		} 
 		catch (Exception e)

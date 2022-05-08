@@ -1,4 +1,4 @@
-package normalnaNazwa;
+package numericMethod;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import core.Matrix;
 import core.Program;
 import core.Tools;
 
-public class CalculatingDeterminantOfAMatrix extends NormalnaNazwa
+public class CalculatingDeterminantOfAMatrix extends NumericalMethod
 {
 
 	// TODO obsługa wyjątków

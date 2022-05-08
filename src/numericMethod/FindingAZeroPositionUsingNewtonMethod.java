@@ -1,21 +1,21 @@
-package normalnaNazwa;
+package numericMethod;
 
 import core.Program;
 import core.Tools;
 
-public class FindingAZeroPositionUsingNewtonMethod extends NormalnaNazwa
+public class FindingAZeroPositionUsingNewtonMethod extends NumericalMethod
 {
 	
 	public double f(double x)
 	{
 		//return x * x * x + x * x - 3 * x;
-		return x*x + 4;
+		return Math.sin(x);
 	}
 	
 	public double df(double x)
 	{
 		//return 3 * x * x + 2 * x - 3;
-		return 2*x;
+		return Math.cos(x);
 	}
 	
 	// TODO Zrobić to nie na twardo
@@ -61,20 +61,24 @@ public class FindingAZeroPositionUsingNewtonMethod extends NormalnaNazwa
 			
 	    }
 
-		if(!resultIsFound) 
-			Program.print("Error(?)");
-
-		Program.print( 
-				"ZeroPosition xn = %f\n"
-			+	"Function Value f(xn) = %f\n"
-			+	"Approximation Accuracy = %f\n"
-			+	"Runs performed = %d",
-				
-			x0, 
-			f0, 
-			approximationAccuracy, 
-			numberOfChecks
-		);
+		if(!resultIsFound)
+		{
+			Program.print("Result was not found - possibly a zero position does not exist.");
+		}
+		else
+		{
+			Program.print( 
+					"ZeroPosition xn = %f\n"
+				+	"Function Value f(xn) = %f\n"
+				+	"Approximation Accuracy = %f\n"
+				+	"Runs performed = %d",
+					
+				x0, 
+				f0, 
+				approximationAccuracy, 
+				numberOfChecks
+			);
+		}
 	}
 
 }

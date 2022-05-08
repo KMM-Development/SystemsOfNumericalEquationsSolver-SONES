@@ -19,11 +19,20 @@ public class Polynominal
 			output += content.get(power) * Math.pow(x, power);
 		}
 		
-		
 		return output;
 	}
 	
-	
+	public Polynominal getDerivative()
+	{
+		Polynominal pol = new Polynominal();
+
+		for(int power: content.keySet())
+		{
+			pol.addExpression(power - 1, this.content.get(power) * power);
+		}
+		
+		return pol;
+	}
 	
 	public static Polynominal simpleInterpret(String line)
 	{

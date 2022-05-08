@@ -1,4 +1,4 @@
-package normalnaNazwa;
+package numericMethod;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import core.Polynominal;
 import core.Program;
 
-public class UsingTrapeziodsToCalculateAreaOfIntegrate extends NormalnaNazwa
+public class UsingTrapeziodsToCalculateAreaOfIntegrate extends NumericalMethod
 {
 
 	// TODO refactor + obsługa wyjątków

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Matrix
 {
+	
 	private ArrayList<Double> content = new ArrayList<>();
 	
 	public int rows, columns;
@@ -46,17 +47,29 @@ public class Matrix
 	{
 		return content.get( y * columns + x );
 	}
-	
+		
 	public void set(int y, int x, double val)
 	{
 		content.set(y * columns + x, val);
 	}
 	
+	public void setColumn(int columnIndex, ArrayList<Double> column)
+	{
+		int y = 0;
+		for(double val: column)
+		{
+			this.set(y++, columnIndex, val);
+		}
+	}
 	
 	public double getDeterminant()
 	{
-		
 		return getDeterminantOf(this);
+	}
+	
+	public Matrix clone()
+	{
+		return new Matrix(columns, rows, this.content);
 	}
 	
 	@Override
@@ -76,7 +89,7 @@ public class Matrix
 		return output.trim();
 	}
 	
-	private static double getDeterminantOf(Matrix matrix)
+	private static double getDeterminantOf( Matrix matrix )
 	{
 		if(matrix.columns == 1)
 		{
@@ -84,34 +97,33 @@ public class Matrix
 		}
 		else
 		if(matrix.columns == 2)
-		{
-			return (matrix.get(0, 0) * matrix.get(1, 1)) - (matrix.get(1,0) * matrix.get(0,1));
+		{						
+			return (matrix.get(0, 0) * matrix.get(1, 1)) - (matrix.get(1, 0) * matrix.get(0, 1));
 		}
 		else
 		{
 			double output = 0;
-			for(int i=0; i<matrix.columns; i++)
+			for(int i = 0; i < matrix.columns; i++)
 			{
-				output += matrix.get(i,0) * ( i%2==0 ? 1 : -1 ) * getDeterminantOf(matrix.getComplementaryMatrix(i,0));
+				output += matrix.get(i, 0) * ( i % 2 == 0 ? 1 : -1 ) * getDeterminantOf(matrix.getComplementaryMatrix(i, 0));
 			}
 			return output;
 		}
-		
 	}
 	
-	private Matrix getComplementaryMatrix(int column, int row)
+	private Matrix getComplementaryMatrix( int row, int column )
 	{
-		Matrix mtrx = new Matrix(columns-1, rows-1);
+		Matrix mtrx = new Matrix(rows-1, columns-1);
 		
 		int mx, my = 0;
-		for(int y=0; y<rows; y++)
+		for(int y = 0; y < rows; y++)
 		{
 			mx = 0;
 			if(y==row) continue;
-			for(int x=0; x<columns; x++)
+			for(int x = 0; x < columns; x++)
 			{
-				if(x==column) continue;
-				mtrx.set(mx, my, this.get(y, x));
+				if(x == column) continue;
+				mtrx.set(my, mx, this.get(y, x));
 				mx++;
 			}
 			my++;
@@ -120,117 +132,4 @@ public class Matrix
 		return mtrx;
 	}
 	
-
 }
-
-/*
- * #include "../headers/matrix.h"
-
-Matrix::Matrix()
-	: m_(3)
-	, n_(3)
-{
-	initialize();
-	fillWithZeros();
-}
-
-Matrix::Matrix(int m, int n)
-	: m_(m)
-	, n_(n)
-{
-	initialize();
-	fillWithZeros();
-}
-
-Matrix::Matrix(int m, int n, double arr[])
-	: m_(m)
-	, n_(n)
-{
-	initialize();
-	fillWithZeros();
-	//int x = 0, y = 0;
-	for (int i = 0; i < (m_*n_); i++) {
-		content_[i%m_][i/m_] = arr[i];
-		//if (x >= m_) {
-		//	x = 0; y++;
-		//	if (y >= n_) return;
-		//}
-	}
-}
-
-void Matrix::show()
-{
-	for(int i = 0; i<n_; i++)
-	{
-		for(int j = 0; j<m_; j++){
-			std::cout<< content_[j][i] << " ";
-		}
-		std::cout<<std::endl;
-	}
-}
-
-Matrix Matrix::getComplementaryMatrix(int m, int n)
-{
-	Matrix mtrx(m_-1,n_-1);
-	
-	int mx, my = 0;
-	for(int y=0; y<n_; y++)
-	{
-		mx = 0;
-		if(y==n) continue;
-		for(int x=0; x<m_; x++)
-		{
-			if(x==m) continue;
-			mtrx.set(mx, my, content_[x][y]);
-			mx++;
-		}
-		my++;
-	}
-
-	return mtrx;
-}
-void Matrix::set(int row, int col, double val)
-{
-	content_[row][col] = val;
-}
-
-void Matrix::initialize()
-{
-	content_ = new double*[n_];
-	
-	for(int i=0; i<n_; i++){
-		content_[i] = new double[m_];	
-	}
-}
-
-void Matrix::fillWithZeros()
-{
-	for(int i = 0; i<n_; i++)
-	{
-		for(int j = 0; j<m_; j++){
-			content_[i][j] = 0;
-		}
-	}
-}
-
-void Matrix::fillWithOnes()
-{
-	for(int i = 0; i<n_; i++)
-	{
-		for(int j = 0; j<m_; j++){
-			content_[i][j] = 1;
-		}
-	}
-	//12 4 2 5 6 7  8 8 6 66 55 4 2 3  3 33 33 
-}
-
-int Matrix::getM()
-{
-	return m_;
-}
-
-int Matrix::getN()
-{
-	return n_;
-}
- */
