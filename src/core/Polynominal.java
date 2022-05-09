@@ -1,5 +1,6 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Polynominal
@@ -34,17 +35,16 @@ public class Polynominal
 		return pol;
 	}
 	
-	public static Polynominal simpleInterpret(String line)
+	public static Polynominal simpleInterpret(ArrayList<Double> input)
 	{
-		String[] split = line.split(" ");
-		
 		Polynominal pol = new Polynominal();
 		
-		for(int i = 0; i < split.length; i++)
+		for(int i = 0; i < input.size(); i++)
 		{
-			pol.addExpression(split.length - 1 - i, Double.parseDouble(split[i]));
+			pol.addExpression(input.size() - 1 - i, input.get(i));
 		}
 		
 		return pol;
 	}
+	
 }

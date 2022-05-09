@@ -1,54 +1,48 @@
 package numericMethod;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
 
 import core.Polynominal;
 import core.Program;
+import core.Tools;
 
 public class UsingTrapeziodsToCalculateAreaOfIntegrate extends NumericalMethod
 {
 
 	// TODO refactor + obsługa wyjątków
 	@Override
-	public void begin()
+	public void begin() throws IOException
 	{
-		try 
-		{
-		    double delta, a, b, x;
-		    int n;
-		    double sum = 0;
-		    
-		    Program.print("--------------------------------------------");
-		    
-		    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Program.print("--------------------------------------------");
+		
+		double
+			a = Tools.requestDouble("Beginning of the integration interval: "),
+			b = Tools.requestDouble("End of the integration interval: "),
+			sum = 0,
+			delta, 
+			x;
 	
-		    System.out.print("Beginning of the integration interval: ");
-		    a = Double.parseDouble(br.readLine());
-	
-		    System.out.print("End of the integration interval: ");
-		    b = Double.parseDouble(br.readLine());
-	
-		    System.out.print("Number of intervals: ");
-		    n = Integer.parseInt(br.readLine());
+		int
+			n = Tools.requestInteger("Number of intervals: ");
 		    
-		    System.out.print("Function: ");
-		    Polynominal polynominal = Polynominal.simpleInterpret(br.readLine());
+			System.out.print("Function: ");
+			Polynominal polynominal = Tools.createPolynominalFromInputLine(
+					"Write down the numbers standing next to the powers of x in the descending order,\n"
+				+	"down to the one next to x^0. Use the \"SPACE\" key between each pair of numbers.\n"
+		   );
 		    
-		    Program.print("--------------------------------------------");
+			Program.print("--------------------------------------------");
 		    
-		    delta = (b - a) / n;
-		    for (int i = 0; i < n; i++) {
-		        x = a + delta * i;
-		        sum = sum + delta * (polynominal.valueAtX(x) + polynominal.valueAtX(x + delta)) / 2;
-		    }
-		    Program.print( "Area of integrate is: %f",  sum );
-		}
-		catch(Exception e)
-		{
-			Program.print("Ding dong something's wrong.");
-			e.printStackTrace();
-		}
+			delta = (b - a) / n;
+			
+			for (int i = 0; i < n; i++) {
+				x = a + delta * i;
+		      sum = sum + delta * (polynominal.valueAtX(x) + polynominal.valueAtX(x + delta)) / 2;
+			}
+			
+		   Program.print( "Area of integrate is: %f",  sum );
+		   
+			Program.print("--------------------------------------------");
 	}
 
 }

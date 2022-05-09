@@ -1,7 +1,5 @@
 package numericMethod;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import core.Matrix;
@@ -20,14 +18,10 @@ public class CalculatingDeterminantOfAMatrix extends NumericalMethod
 		try 
 		{
 			Program.print("--------------------------------------------");
-		    
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		   
+			rows = Tools.requestInteger("Numbers of Rows in Matrix: ");
 	
-			System.out.print("Numbers of Rows in Matrix: ");
-			rows = Integer.parseInt(br.readLine());
-	
-			System.out.print("Numbers of Columns in Matrix: ");
-			columns = Integer.parseInt(br.readLine());
+			columns = Tools.requestInteger("Numbers of Columns in Matrix: ");
 		    
 			if(rows != columns) 
 			{
@@ -35,11 +29,14 @@ public class CalculatingDeterminantOfAMatrix extends NumericalMethod
 				return;
 			}
 			
-			ArrayList<Double> numbers = new ArrayList<>();
-			do
-			{
-				numbers.addAll(Tools.parseLineToArrayOfDoubles(br.readLine()));
-			} while(numbers.size() < rows * columns);
+			ArrayList<Double> numbers = 
+			Tools.requestDoublesToCapacity(
+					String.format(
+							"Please write down %d real numbers being the entries of the matrix.\n"
+						+ 	"Use the \"SPACE\" or \"ENTER\" key between each pair of entries.", rows*columns
+					), 
+					rows*columns
+			);
 						
 			Matrix matrix = new Matrix(rows, columns, numbers);
 			

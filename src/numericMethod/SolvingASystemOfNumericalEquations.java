@@ -1,7 +1,5 @@
 package numericMethod;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import core.Matrix;
@@ -18,78 +16,72 @@ public class SolvingASystemOfNumericalEquations extends NumericalMethod
 			int columns, rows;
 			
 			Program.print("--------------------------------------------");
-			    
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-			System.out.print("Numbers of Rows in Polynominals Matrix: ");
-			rows = Integer.parseInt(br.readLine());
-		
-			System.out.print("Numbers of Columns in Polynominals Matrix: ");
-			columns = Integer.parseInt(br.readLine());
-			    
-			if(rows != columns) 
+		   
+			rows = Tools.requestInteger("Numbers of Rows in Matrix: ");
+	
+			columns = Tools.requestInteger("Numbers of Columns in Matrix: ");
+		   
+			if( rows != columns ) 
 			{
 				Program.print("Cannot calculate a determinant of non-square matrix,"
 						+ " therefore cannot solve the System of Numerical Equations.");
 				return;
 			}
-				
-			ArrayList<Double> numbers = new ArrayList<>();
-			do
-			{
-				numbers.addAll(Tools.parseLineToArrayOfDoubles(br.readLine()));
-			} while(numbers.size() < rows * columns);
-			
-			
+
+			ArrayList<Double> numbers = 
+				Tools.requestDoublesToCapacity(
+					String.format(
+							"Please write down %d real numbers being the entries of the matrix.\n"
+						+ 	"Use the \"SPACE\" or \"ENTER\" key between each pair of entries.", rows*columns
+					), 
+					rows * columns
+			);
+	
 			Matrix 
-				matrix = new Matrix(rows, columns, Tools.trimArrayToGivenSize(numbers, rows * columns));
+				matrix = new Matrix(rows, columns, numbers);
 			
 			double mainDet = matrix.getDeterminant();
-			if(mainDet == 0)
+			if( mainDet == 0 )
 			{
-				Program.print("Determinant of the main matrix is 0, so there is no"
-						+ " concrete solution to the given System of Numerical Equations.");
+				Program.print(
+							"Determinant of the main matrix is 0, so there is no concrete\n"
+						+	"solution to the given System of Numerical Equations.");
 				return;
 			}
 			
-			numbers = new ArrayList<>();
+			numbers =
+			Tools.requestDoublesToCapacity(
+						String.format( 
+							"Now please provide a vector of %d solutions to the given Polynominals Matrix.", 
+							rows 
+						), 						
+						rows
+			);
 			
-			Program.print("Now please provide a vector of %d solutions to the given Polynominals Matrix.", rows);
+			Program.print( "--------------------------------------------\n%s\n", matrix );
 			
-			do
-			{
-				numbers.addAll(Tools.parseLineToArrayOfDoubles(br.readLine()));
-			} while(numbers.size() < rows);
-			
-			numbers = Tools.trimArrayToGivenSize(numbers, rows);
-			
-			Program.print("--------------------------------------------");
-		
-			Program.print("\n%s\n", matrix);
-			
-			for(double number: numbers)
+			for( double number: numbers )
 			{
 				Program.print("%f", number);
 			}
 
 			Program.print("\n");
 			
-			for(int i = 0; i < rows; i++)
+			for( int i = 0; i < rows; i++ )
 			{
 				Matrix resultMatrix = matrix.clone();
-				resultMatrix.setColumn(i, numbers);
+				resultMatrix.setColumn( i, numbers );
 				
-
 				//Program.print("%s\n", resultMatrix);
 								
 				double det = resultMatrix.getDeterminant();
 
-				Program.print("x%d = %f / %f = %f\n", i+1, det, mainDet, det/mainDet);
+				Program.print( "x%d = %f / %f = %f\n", i+1, det, mainDet, det/mainDet );
 			}
 
-			Program.print("--------------------------------------------");
+			Program.print( "--------------------------------------------" );
 		}
-		catch(Exception e)
+		catch( Exception e )
 		{
 			Program.print("Ding dong something's wrong.");
 			e.printStackTrace();

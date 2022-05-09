@@ -16,7 +16,7 @@ public class Program
 	{
 		try
 		{
-			NumericalMethod n = new SolvingASystemOfNumericalEquations();
+			NumericalMethod n = new CalculatingDeterminantOfAMatrix();
 			n.begin();
 		} 
 		catch (Exception e)
