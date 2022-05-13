@@ -36,6 +36,53 @@ public class Tools
 		return output;
 	}
 	
+	public static void clearScreen(){
+		try 
+		{
+			if (System.getProperty("os.name").contains("Windows"))
+			{
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			}
+			else
+			{
+				Runtime.getRuntime().exec("clear");
+			}
+		}
+		catch (Exception e) 
+		{ 
+			Program.print("Exception while trying to clear screen."); 
+			e.printStackTrace(); 
+		}
+	}
+	
+	public static void requestEnter()
+	{
+		System.out.print("Press the ENTER key to continue.");
+		try
+		{
+			consoleReader.readLine();
+		} 
+		catch (IOException e)
+		{
+			System.out.print("There was an unexpected I/O exception.");
+		}
+	}
+	
+	public static int requestInteger(String requestMessage, int minVal, int maxVal) throws IOException
+	{
+		int output = requestInteger(requestMessage);
+		while(output < minVal || output > maxVal)
+		{
+			output = 
+			requestInteger(
+					"Number provided is out of the acceptable scope [%d-%d],\n"
+				+	"please provide a correct number: ",
+				minVal, maxVal
+			);
+		}
+		return output;
+	}
+	
 	public static int requestInteger(String requestMessage) throws IOException
 	{
 		System.out.print(requestMessage);

@@ -6,7 +6,7 @@ import core.Matrix;
 import core.Program;
 import core.Tools;
 
-public class CalculatingDeterminantOfAMatrix extends NumericalMethod
+public class CalculatingTheDeterminantOfAMatrix extends NumericalMethod
 {
 
 	// TODO obsługa wyjątków
