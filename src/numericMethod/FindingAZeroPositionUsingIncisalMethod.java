@@ -31,8 +31,8 @@ public class FindingAZeroPositionUsingIncisalMethod extends NumericalMethod
 			resultIsFound = false;
 		
 		Polynominal polynominal = Tools.createPolynominalFromInputLineWithStandardMessage();
-		x1 = Tools.requestDouble("Please provide the initial boundry value of the interval (x1): ");
-		x2 = Tools.requestDouble("Please provide the final boundry value of the interval (x2): ");
+		x1 = Tools.requestDouble("Please provide the starting boundary value of the interval (x1): ");
+		x2 = Tools.requestDouble("Please provide the closing boundary value of the interval (x2): ");
 		
 		f1 = polynominal.valueAtX(x1);
 		f2 = polynominal.valueAtX(x2);
@@ -45,8 +45,8 @@ public class FindingAZeroPositionUsingIncisalMethod extends NumericalMethod
 
 	        if((Tools.absoluteValueOf(fn) < approximationAccuracy) || (Tools.absoluteValueOf(xn - x2) < approximationAccuracy))
 	        {
-	      	  resultIsFound = true;
-	           break;
+	        	resultIsFound = true;
+	        	break;
 	        }
 
 	        x1 = x2; f1 = f2;
@@ -55,23 +55,26 @@ public class FindingAZeroPositionUsingIncisalMethod extends NumericalMethod
 		
 		if(!resultIsFound)
 		{
-			Program.print("Result was not found - possibly a zero position does not exist.");
-		}
-		else
-		{
-			Program.print( 
-					"ZeroPosition xn = %f\n"
-				+	"Function Value f(xn) = %f\n"
-				+	"Approximation Accuracy = %f\n"
-				+	"Runs performed = %d",
-				
-				xn, 
-				fn, 
-				approximationAccuracy, 
-				numberOfChecks
+			Program.print(
+				Tools.BELT + "\n"
+				+	"Result was not found - possibly a zero position does not\n"
+				+	"exist within the given boundary."
 			);
 		}
 		
+		Program.print( 
+			Tools.BELT + "\n"
+			+	"ZeroPosition xn = %.14f\n"
+			+	"Function Value f(xn) = %.14f\n"
+			+	"Approximation Accuracy = %.14f\n"
+			+	"Runs performed = %d\n" +
+			Tools.BELT,
+				
+			xn, 
+			fn, 
+			approximationAccuracy, 
+			numberOfChecks
+		);		
 	}
 
 }

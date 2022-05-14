@@ -58,21 +58,20 @@ public class FindingAZeroPositionUsingNewtonMethod extends NumericalMethod {
 		if (!resultIsFound) 
 		{
 			Program.print("Result was not found - possibly a zero position does not exist.");
-		} 
-		else 
-		{
-			Program.print(
-				"ZeroPosition xn = %f\n" + 
-				"Function Value f(xn) = %f\n" + 
-				"Approximation Accuracy = %f\n"+ 
-				"Runs performed = %d",
-
-				x0, 
-				f0, 
-				approximationAccuracy, 
-				numberOfChecks
-			);
 		}
+		Program.print(
+			Tools.BELT + "\n" +
+			"ZeroPosition xn = %.14f\n" + 
+			"Function Value f(xn) = %.14f\n" + 
+			"Approximation Accuracy = %.14f\n"+ 
+			"Runs performed = %d\n" +
+			Tools.BELT,
+			
+			x0, 
+			f0, 
+			approximationAccuracy, 
+			numberOfChecks
+		);
 	}
 
 }

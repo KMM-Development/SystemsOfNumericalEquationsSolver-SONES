@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 public class Tools
 {
+	public static final String
+		DOUBLE_BELT = "=====================================================",
+		BELT = "----------------------------------------------------";
 	
 	private static BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 	

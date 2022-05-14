@@ -16,8 +16,7 @@ public class Program
 	private static String buildMenuString(ArrayList<NumericalMethod> methods)
 	{
 		String 
-			belk = "=====================================================",
-			menuOutput = belk+"\n";
+			menuOutput = Tools.DOUBLE_BELT+"\n";
 		
 		int index = 0;
 		
@@ -26,7 +25,7 @@ public class Program
 			menuOutput += String.format("%d.%s\n", ++index, method.getReadableClassNameAsSentence());
 		}
 		
-		menuOutput += "0. Exit.\n"+belk+"\nYour choice: ";
+		menuOutput += "0. Exit.\n"+Tools.DOUBLE_BELT+"\nYour choice: ";
 		
 		return menuOutput;
 	}

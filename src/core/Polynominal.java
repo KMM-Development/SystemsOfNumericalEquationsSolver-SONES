@@ -29,7 +29,7 @@ public class Polynominal
 
 		for(int power: content.keySet())
 		{
-			pol.addExpression(power - 1, this.content.get(power) * power);
+			if(power!=0) pol.addExpression(power - 1, this.content.get(power) * power);
 		}
 		
 		return pol;
@@ -45,6 +45,23 @@ public class Polynominal
 		}
 		
 		return pol;
+	}
+	
+	@Override
+	public String toString()
+	{
+		String output = "";
+		
+		ArrayList<String> outputs = new ArrayList<>();
+		
+		content.forEach((i,d) -> {outputs.add(d+"*x^"+i);});
+		
+		for(String s: outputs)
+		{
+			output += s+" + ";
+		}
+		
+		return output.substring(0, output.length()-3);
 	}
 	
 }
