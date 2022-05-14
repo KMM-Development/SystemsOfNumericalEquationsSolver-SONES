@@ -13,11 +13,12 @@ public class Tools
 	public static ArrayList<Double> parseLineToArrayOfDoubles(String input)
 	throws NumberFormatException, NullPointerException
 	{
-		String[] split = input.trim().split(" ");
+		String[] split = deleteAdditionalSpaces(input).split(" ");
 		
 		ArrayList<Double> output = new ArrayList<Double>();
 		for(String s: split)
 		{
+			if(s.isEmpty()) continue;
 			output.add(Double.parseDouble(s));
 		}
 
@@ -91,7 +92,7 @@ public class Tools
 	{
 		System.out.print(requestMessage);
 		
-		String input = consoleReader.readLine().trim();
+		String input = deleteAdditionalSpaces(consoleReader.readLine());
 		
 		int output;
 		
@@ -112,7 +113,7 @@ public class Tools
 	{
 		System.out.print(requestMessage);
 		
-		String input = consoleReader.readLine().trim();
+		String input = deleteAdditionalSpaces(consoleReader.readLine());
 		
 		double output;
 		
@@ -166,9 +167,11 @@ public class Tools
 			}
 			catch(NumberFormatException n)
 			{
+				String message;
 				Program.print(
-						"Your input in the line above contained at least one non-double value.\n"
-					+	"None of the values in the above line were added, please input them again and proceed.\n"
+						"Your input in the line above contained at least one non-double value. (%s)\n"
+					+	"None of the values in the above line were added, please input them again and proceed.\n", 
+						(message = n.getMessage()).substring(message.indexOf(':')+2)
 				);
 			}
 		}
@@ -227,6 +230,10 @@ public class Tools
 		return new Matrix(rows, columns, numbers);
 	}
 	
+	private static String deleteAdditionalSpaces(String input)
+	{
+		return input.replace("[ ][ ]+", " ");
+	}
 	
 	public static double absoluteValueOf(double x)
 	{
