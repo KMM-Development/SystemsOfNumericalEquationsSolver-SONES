@@ -11,13 +11,14 @@ public class Tools
 	private static BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 	
 	public static ArrayList<Double> parseLineToArrayOfDoubles(String input)
+	throws NumberFormatException, NullPointerException
 	{
 		String[] split = input.trim().split(" ");
 		
 		ArrayList<Double> output = new ArrayList<Double>();
 		for(String s: split)
 		{
-			output.add(Double.parseDouble(s)); //TODO obsługa wyjątków
+			output.add(Double.parseDouble(s));
 		}
 
 		return output;
@@ -45,7 +46,8 @@ public class Tools
 			}
 			else
 			{
-				Runtime.getRuntime().exec("clear");
+		        System.out.print("\033[H\033[2J");
+		        System.out.flush();
 			}
 		}
 		catch (Exception e) 
@@ -75,8 +77,10 @@ public class Tools
 		{
 			output = 
 			requestInteger(
+				String.format(
 					"Number provided is out of the acceptable scope [%d-%d],\n"
-				+	"please provide a correct number: ",
+				+	"please provide a correct number: ", minVal, maxVal
+				),
 				minVal, maxVal
 			);
 		}
@@ -97,7 +101,7 @@ public class Tools
 		}
 		catch(NumberFormatException e)
 		{
-			Program.print("Your input was not an Integer (\"%s\")\n, please try again.", input);
+			Program.print("Your input was not an Integer (\"%s\"),\n please try again.", input);
 			return requestInteger(requestMessage);
 		}
 		
@@ -173,6 +177,15 @@ public class Tools
 		trimArrayToGivenSize(container, wantedSize);
 	}
 	
+	public static Polynominal createPolynominalFromInputLineWithStandardMessage() throws IOException
+	{
+		return createPolynominalFromInputLine(
+				"Write down the numbers standing next to the powers of x in the descending order,\n"
+			+	"down to the one next to x^0. (for example, y = x^2 + 2x + 3 would be written down as '1 2 3')\n"
+			+	"Use the \"SPACE\" key between each pair of numbers.\n"
+		);
+	}
+	
 	public static Polynominal createPolynominalFromInputLine( String requestMessage ) throws IOException
 	{
 		ArrayList<Double> container;
@@ -188,6 +201,32 @@ public class Tools
 		}
 		return Polynominal.simpleInterpret(container);
 	}
+	
+	public static Matrix requestSquareMatrix()
+	throws IOException, ProgramException
+	{
+		int rows = Tools.requestInteger("Numbers of Rows in Matrix: ");
+		
+		int columns = Tools.requestInteger("Numbers of Columns in Matrix: ");
+	   
+		if( rows != columns ) 
+		{
+
+			throw new ProgramException("Cannot calculate a determinant of non-square matrix.");
+		}
+
+		ArrayList<Double> numbers = 
+			Tools.requestDoublesToCapacity(
+				String.format(
+						"Please write down %d real numbers being the entries of the matrix.\n"
+					+ 	"Use the \"SPACE\" or \"ENTER\" key between each pair of entries.", rows*columns
+				), 
+				rows * columns
+		);
+
+		return new Matrix(rows, columns, numbers);
+	}
+	
 	
 	public static double absoluteValueOf(double x)
 	{

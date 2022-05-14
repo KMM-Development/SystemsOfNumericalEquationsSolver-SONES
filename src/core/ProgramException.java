@@ -6,7 +6,14 @@ public class ProgramException extends Exception
 	
 	public ProgramException(Object message, Object... args)
 	{
-		super(Converter.format(Converter.stringify(message), args));
+		super(
+			Converter.format(
+				Converter.stringify(
+					message
+				), 
+				args
+			)
+		);
 	}
 
 }

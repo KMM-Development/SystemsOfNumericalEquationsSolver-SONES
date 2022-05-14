@@ -54,14 +54,14 @@ public class Program
 				if(choice == 0) 
 					System.exit(0);
 				else 
-					methods.get(choice-1).begin();
+					methods.get(choice-1).safeBegin();
 				
 				Tools.requestEnter();
 			}
 		} 
 		catch (Exception e)
 		{
-			print("Something caught in main");
+			print("Unexpected exception caught in main.");
 			e.printStackTrace();
 		}
 		

@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import core.Program;
+import core.ProgramException;
+
 public abstract class NumericalMethod
 {
 	
-	public abstract void begin() throws IOException;
+	protected abstract void begin() throws IOException, ProgramException;
 	
 	public String getReadableClassNameAsSentence()
 	{
@@ -26,4 +29,20 @@ public abstract class NumericalMethod
 		return output+".";
 	}
 	
+	public void safeBegin()
+	{
+		try
+		{
+			begin();
+		}
+		catch (IOException e) 
+		{
+			Program.print("An unexpected I/O Exception caught. Returning to main menu.");
+		} 
+		catch (ProgramException e)
+		{
+			Program.print(e.getMessage());
+		}
+		
+	}
 }

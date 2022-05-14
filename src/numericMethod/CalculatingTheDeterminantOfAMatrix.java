@@ -1,55 +1,39 @@
 package numericMethod;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 import core.Matrix;
 import core.Program;
+import core.ProgramException;
 import core.Tools;
 
 public class CalculatingTheDeterminantOfAMatrix extends NumericalMethod
 {
 
-	// TODO obsługa wyjątków
 	@Override
-	public void begin()
+	protected void begin()
 	{
-		int columns, rows;
-		
-		try 
+		Matrix matrix;
+		try
 		{
 			Program.print("--------------------------------------------");
-		   
-			rows = Tools.requestInteger("Numbers of Rows in Matrix: ");
-	
-			columns = Tools.requestInteger("Numbers of Columns in Matrix: ");
-		    
-			if(rows != columns) 
-			{
-				Program.print("Cannot calculate a determinant of non-square matrix.");
-				return;
-			}
-			
-			ArrayList<Double> numbers = 
-			Tools.requestDoublesToCapacity(
-					String.format(
-							"Please write down %d real numbers being the entries of the matrix.\n"
-						+ 	"Use the \"SPACE\" or \"ENTER\" key between each pair of entries.", rows*columns
-					), 
-					rows*columns
-			);
-						
-			Matrix matrix = new Matrix(rows, columns, numbers);
-			
+
+			matrix = Tools.requestSquareMatrix();
+
 			Program.print("\nDeterminant of the given matrix\n\n%s\n\nis '%f'.", matrix, matrix.getDeterminant());
-						
+
 			Program.print("--------------------------------------------");
-		
-		}
-		catch(Exception e)
+			
+		} 
+		catch (IOException e)
 		{
-			Program.print("Ding dong something's wrong.");
-			e.printStackTrace();
+			Program.print("An unexpected I/O Exception caught. Returning to main menu.");
 		}
+		catch (ProgramException e)
+		{
+			Program.print(e.getMessage());
+		}
+
 	}
 
 }
