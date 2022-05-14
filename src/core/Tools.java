@@ -71,7 +71,8 @@ public class Tools
 		}
 	}
 	
-	public static int requestInteger(String requestMessage, int minVal, int maxVal) throws IOException
+	public static int requestInteger(String requestMessage, int minVal, int maxVal) 
+	throws IOException
 	{
 		int output = requestInteger(requestMessage);
 		while(output < minVal || output > maxVal)
@@ -88,7 +89,8 @@ public class Tools
 		return output;
 	}
 	
-	public static int requestInteger(String requestMessage) throws IOException
+	public static int requestInteger(String requestMessage)
+	throws IOException
 	{
 		System.out.print(requestMessage);
 		
@@ -109,7 +111,8 @@ public class Tools
 		return output;
 	}
 	
-	public static double requestDouble(String requestMessage) throws IOException
+	public static double requestDouble(String requestMessage) 
+	throws IOException
 	{
 		System.out.print(requestMessage);
 		
@@ -180,7 +183,8 @@ public class Tools
 		trimArrayToGivenSize(container, wantedSize);
 	}
 	
-	public static Polynominal createPolynominalFromInputLineWithStandardMessage() throws IOException
+	public static Polynominal createPolynominalFromInputLineWithStandardMessage() 
+	throws IOException
 	{
 		return createPolynominalFromInputLine(
 				"Write down the numbers standing next to the powers of x in the descending order,\n"
@@ -189,7 +193,8 @@ public class Tools
 		);
 	}
 	
-	public static Polynominal createPolynominalFromInputLine( String requestMessage ) throws IOException
+	public static Polynominal createPolynominalFromInputLine( String requestMessage ) 
+	throws IOException
 	{
 		ArrayList<Double> container;
 		Program.print(requestMessage);
