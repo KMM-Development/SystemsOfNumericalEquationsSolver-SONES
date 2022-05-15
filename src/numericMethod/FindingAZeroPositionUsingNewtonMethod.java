@@ -29,7 +29,7 @@ public class FindingAZeroPositionUsingNewtonMethod extends NumericalMethod {
 			polynominal = Tools.createPolynominalFromInputLineWithStandardMessage(),
 			derivative = polynominal.getDerivative();
 
-		x0 = Tools.requestDouble("Please provide the initial boundry value of the interval (x0): ");
+		x0 = Tools.requestDouble("Please provide the initial boundary value of the interval (x0): ");
 
 		while (++numberOfChecks < maxNumberOfChecks) 
 		{
@@ -57,7 +57,8 @@ public class FindingAZeroPositionUsingNewtonMethod extends NumericalMethod {
 
 		if (!resultIsFound) 
 		{
-			Program.print("Result was not found - possibly a zero position does not exist.");
+			Program.print("Result was not found - possibly a zero position does not exist.\n"
+					+ "Or the starting position was too far away.");
 		}
 		Program.print(
 			Tools.BELT + "\n" +

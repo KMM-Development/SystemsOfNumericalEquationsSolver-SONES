@@ -58,7 +58,7 @@ public class FindingAZeroPositionUsingIncisalMethod extends NumericalMethod
 			Program.print(
 				Tools.BELT + "\n"
 				+	"Result was not found - possibly a zero position does not\n"
-				+	"exist within the given boundary."
+				+	"exist close enough to the given starting points."
 			);
 		}
 		
