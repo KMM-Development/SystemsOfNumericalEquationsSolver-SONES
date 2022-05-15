@@ -200,7 +200,7 @@ public class Tools
 	throws IOException
 	{
 		ArrayList<Double> container;
-		Program.print(requestMessage);
+		System.out.print(requestMessage);
 		try
 		{
 			container = parseLineToArrayOfDoubles(consoleReader.readLine());
