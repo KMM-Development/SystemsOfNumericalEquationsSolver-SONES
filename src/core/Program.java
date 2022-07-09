@@ -69,8 +69,8 @@ public class Program
 	public static void print(Object input, Object... args) 
 	{
 		System.out.println(
-			Converter.format(
-				Converter.stringify(input), 
+			Tools.format(
+				Tools.stringify(input), 
 				args
 			)
 		);

@@ -7,9 +7,9 @@ public class ProgramException extends Exception
 	public ProgramException(Object message, Object... args)
 	{
 		super(
-			Converter.format
+			Tools.format
 			(
-				Converter.stringify
+				Tools.stringify
 				(
 					message
 				), 

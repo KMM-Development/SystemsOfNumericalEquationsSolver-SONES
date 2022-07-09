@@ -222,8 +222,7 @@ public class Tools
 	   
 		if( rows != columns ) 
 		{
-
-			throw new ProgramException("Cannot calculate a determinant of non-square matrix.");
+			throw new ProgramException("Cannot calculate a determinant of a non-square matrix.");
 		}
 
 		ArrayList<Double> numbers = 
@@ -246,6 +245,16 @@ public class Tools
 	public static double absoluteValueOf(double x)
 	{
 		return x * ( x > 0 ? 1 : -1 );
+	}
+	
+	public static String stringify(Object input) 
+	{
+		return (input instanceof String) ? (String)input : input.toString();
+	}
+	
+	public static String format(String message, Object... args) 
+	{
+		return (args.length > 0) ? String.format(message, args) : message;
 	}
 	
 }

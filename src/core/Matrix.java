@@ -105,7 +105,8 @@ public class Matrix
 			double output = 0;
 			for(int i = 0; i < matrix.columns; i++)
 			{
-				output += matrix.get(i, 0) * ( i % 2 == 0 ? 1 : -1 ) * getDeterminantOf(matrix.getComplementaryMatrix(i, 0));
+				output += matrix.get(i, 0) * ( i % 2 == 0 ? 1 : -1 ) 
+						* getDeterminantOf(matrix.getComplementaryMatrix(i, 0));
 			}
 			return output;
 		}
